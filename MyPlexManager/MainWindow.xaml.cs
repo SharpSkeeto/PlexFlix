@@ -26,6 +26,12 @@ namespace MyPlexManager
 		public MainWindow()
 		{
 			this.InitializeComponent();
+
+			Title = "MyPlex Manager";
+			ExtendsContentIntoTitleBar = true;
+			SetTitleBar(AppTitleBar);
+
+			  
 		}
 
 	}
