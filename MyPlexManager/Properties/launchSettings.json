@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MyPlexManager (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MyPlexManager (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
