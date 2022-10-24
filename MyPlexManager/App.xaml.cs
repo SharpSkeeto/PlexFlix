@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -6,6 +8,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
+using Plex.Api.Factories;
+using Plex.Library.Factories;
+using Plex.ServerApi;
+using Plex.ServerApi.Api;
+using Plex.ServerApi.Clients.Interfaces;
+using Plex.ServerApi.Clients;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +41,28 @@ namespace MyPlexManager
 		public App()
 		{
 			this.InitializeComponent();
+
+			// Create Client Options
+			var apiOptions = new ClientOptions
+			{
+				Product = "API_MyPlexManager",
+				DeviceName = "API_MyPlexManager",
+				ClientId = Environment.MachineName,
+				Platform = "WinUI3-Win10",
+				Version = "v1"
+			};
+
+			// Setup Dependency Injection
+			Ioc.Default.ConfigureServices(new ServiceCollection()
+				.AddSingleton(apiOptions)
+				.AddTransient<IPlexServerClient, PlexServerClient>()
+				.AddTransient<IPlexAccountClient, PlexAccountClient>()
+				.AddTransient<IPlexLibraryClient, PlexLibraryClient>()
+				.AddTransient<IApiService, ApiService>()
+				.AddTransient<IPlexFactory, PlexFactory>()
+				.AddTransient<IPlexRequestsHttpClient, PlexRequestsHttpClient>()
+				.BuildServiceProvider());
+
 		}
 
 		/// <summary>
