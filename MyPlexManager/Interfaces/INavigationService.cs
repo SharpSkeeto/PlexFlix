@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using MyPlexManager.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyPlexManager.Interfaces;
 
@@ -26,6 +27,6 @@ public interface INavigationService
     void SetCurrentNavigationViewItem(NavigationViewItem item);
     void SetCurrentPage(Type type);
 
-    void PopulateNavigationMenu();
+    Task PopulateNavigationMenu();
 
 }

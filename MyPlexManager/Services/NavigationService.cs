@@ -11,6 +11,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyPlexManager.Services;
 
@@ -183,10 +184,11 @@ public class NavigationService : INavigationService
 		appFrame?.Navigate(type);
 	}
 
-	public async void PopulateNavigationMenu()
+	public async Task PopulateNavigationMenu()
 	{
 		try
 		{
+			await Task.Delay(200);
 			var client = Ioc.Default.GetService<IPlexApiService>();
 			if (client is not null)
 			{

@@ -23,8 +23,8 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <!--<WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize>
     <WindowsAppSDKBootstrapAutoInitializeOptions_OnNoMatch_ShowUI>false</WindowsAppSDKBootstrapAutoInitializeOptions_OnNoMatch_ShowUI>
-    <WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>false</WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>-->
+    <WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>false</WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>-->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <!--<ApplicationIcon>Assets\appIcon.ico</ApplicationIcon>-->
     <!--<WindowsPackageType>None</WindowsPackageType>-->
   </PropertyGroup>
@@ -127,7 +127,7 @@
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.17.4" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.18" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

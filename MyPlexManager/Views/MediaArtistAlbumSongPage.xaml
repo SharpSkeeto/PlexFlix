@@ -40,7 +40,8 @@
         </Grid.ColumnDefinitions>
 
         <ProgressRing x:Name="progressRing" 
-                    Grid.Row="1" 
+                    Grid.RowSpan="4"
+                    Grid.ColumnSpan="2"
                     Height="60" 
                     Width="60" 
                     HorizontalAlignment="Center" 

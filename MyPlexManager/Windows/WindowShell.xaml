@@ -24,7 +24,7 @@
             Margin="48,0,0,0">
             <Grid
                 Height="48"
-                Margin="2,0,0,0"
+                Margin="0,0,0,0"
                 VerticalAlignment="Top"
                 Padding="5">
                 <Grid.ColumnDefinitions>
@@ -57,7 +57,8 @@
                Opacity="1"
                Source="/Assets/MyPlex-Logo.png"
                HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+               VerticalAlignment="Center"
+               Visibility="Collapsed"/>
 
         <ProgressRing x:Name="progressRing" 
                       Grid.ColumnSpan="2"
@@ -67,8 +68,15 @@
                       VerticalAlignment="Center" 
                       Margin="0,0,0,0"
                       Foreground="DarkOrange"
-                      Background="Transparent" 
+                      Background="Transparent"
                       />
+
+        <TextBlock x:Name="progressText"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Margin="0,90,0,0"
+                   Text="Loading Navigation..."/>
 
         <NavigationView
                 x:Name="NavigationViewControl"
@@ -77,33 +85,14 @@
                 IsTitleBarAutoPaddingEnabled="False"
                 AlwaysShowHeader="False"
                 IsSettingsVisible="True"
-                Header=" "
                 IsTabStop="False" 
-                IsBackButtonVisible="Auto"
+                IsBackButtonVisible="Visible"
                 Background="Transparent"
+                IsPaneToggleButtonVisible="True"
+                IsPaneOpen="False"
                 BackRequested="NavigationViewControl_BackRequested" 
                 ItemInvoked="NavigationViewControl_ItemInvoked"
                 Loaded="NavigationViewControl_Loaded">
-            <NavigationView.HeaderTemplate>
-                <DataTemplate>
-                    <Grid Margin="-40,-40,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid x:Name="pageTitle"
-                                Background="Transparent"
-                                Height="30"
-                                VerticalAlignment="Top">
-                            <TextBlock x:Name="title" 
-                                    Style="{StaticResource TitleTextBlockStyle}"
-                                    FontSize="24"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding}"/>
-                        </Grid>
-                    </Grid>
-                </DataTemplate>
-            </NavigationView.HeaderTemplate>
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home" Tag="MyPlexManager.Views.HomePage" ToolTipService.ToolTip="Home" />
             </NavigationView.MenuItems>
