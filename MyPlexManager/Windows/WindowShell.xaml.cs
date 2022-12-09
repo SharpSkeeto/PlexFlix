@@ -6,6 +6,7 @@ using MyPlexManager.Helpers;
 using MyPlexManager.Interfaces;
 using MyPlexManager.Views;
 using System;
+using System.Threading.Tasks;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -29,11 +30,15 @@ public sealed partial class WindowShell : Window
 
 		navigationService = Ioc.Default.GetService<INavigationService>();
 
-		// todo: if appsettings is null / or DBfile not present then we need to goto the setting page for initial setup
-		// before trying to build the navigation menu
-		navigationService?.PopulateNavigationMenu();
+		// TODO: if appsettings is null / or DBfile not present then we need to goto the setting page for initial setup before trying to build the navigation menu
 
-		progressRing.Visibility = Visibility.Collapsed;
+		navigationService?.PopulateNavigationMenu()
+			.ContinueWith(t => {
+				BackGroundImage.Visibility= Visibility.Visible;
+				progressRing.Visibility = Visibility.Collapsed;
+				progressText.Visibility= Visibility.Collapsed;
+				NavigationViewControl.IsPaneOpen= true;
+			}, TaskScheduler.FromCurrentSynchronizationContext());
 	}
 
 	public string GetAppTitleFromSystem()

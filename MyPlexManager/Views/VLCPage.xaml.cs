@@ -74,7 +74,6 @@ public sealed partial class VLCPage : Page
 
 		var hwnd = hWnd;
 
-
 		LibVLC = new LibVLC(enableDebugLogs: true);
 		MediaPlayer = new MediaPlayer(LibVLC);
 		var media = new Media(LibVLC, new Uri(mediaPath));
