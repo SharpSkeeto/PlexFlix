@@ -8,8 +8,37 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
+                <ResourceDictionary Source="ms-appx:///Converters/Converters.xaml" />
+
+                
             </ResourceDictionary.MergedDictionaries>
+            
             <!-- Other app resources here -->
+            <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <AcrylicBrush x:Key="MyAcrylicBrush" 
+                                TintColor="Black"
+                                TintOpacity="0.1"
+                                TintLuminosityOpacity="0.1"
+                                FallbackColor="DarkGray"/>
+                </ResourceDictionary>
+
+                <ResourceDictionary     x:Key="HighContrast">
+                    <SolidColorBrush    x:Key="MyAcrylicBrush"
+                                        Color="{ThemeResource SystemColorWindowColor}"/>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Light">
+                    <AcrylicBrush   x:Key="MyAcrylicBrush"
+                                    TintColor="LightGray"
+                                    TintOpacity="0.8"
+                                    TintLuminosityOpacity="0.5"
+                                    FallbackColor="AntiqueWhite"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

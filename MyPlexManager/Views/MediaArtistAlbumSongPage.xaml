@@ -1,0 +1,309 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. -->
+<!-- Licensed under the MIT License. See LICENSE in the project root for license information. -->
+
+<Page
+    x:Class="MyPlexManager.Views.MediaArtistAlbumSongPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyPlexManager.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Disabled"
+    Background="{ThemeResource MyAcrylicBrush}"
+    xmlns:models="using:MyPlexManager.Models"
+    xmlns:views="using:MyPlexManager.Views"
+    xmlns:viewmodels="using:MyPlexManager.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MediaArtistAlbumSongViewModel}">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="DarkGoldenrod" Opacity=".75" />
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="DarkGoldenrod" Opacity=".5" />
+        <SolidColorBrush x:Key="ListViewItemSelectedBorderBrush" Color="DarkOrange" />
+        <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderBrush" Color="DarkOrange" />
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="DarkOrange" />
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DodgerBlue" />
+        <StandardUICommand x:Name="PlayCommand"
+                           Command="{x:Bind ArtistAlbumSongViewModel.PlayButtonCommand}"/>
+    </Page.Resources>
+
+    <Grid ColumnSpacing="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="280" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"  />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ProgressRing x:Name="progressRing" 
+                    Grid.Row="1" 
+                    Height="60" 
+                    Width="60" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Margin="0,0,0,0"
+                    Foreground="DarkOrange"
+                    Background="Transparent"
+                    Visibility="Visible"
+                    Canvas.ZIndex="1"/>
+
+        <StackPanel x:Name="MediaDetailPoster"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="16,8,8,8"
+                    Background="Transparent"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+            <StackPanel CornerRadius="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
+
+                <Image x:Name="posterImage"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Height="325"
+                            IsHitTestVisible="True">
+                    <Image.Source>
+                        <BitmapImage UriSource="{x:Bind ArtistAlbumSongViewModel.MediaThumbNailUri}"
+                                     DecodePixelHeight="400" />
+                    </Image.Source>
+                </Image>
+
+            </StackPanel>
+        </StackPanel>
+
+        <!--<Button x:Name="PosterPlayButton"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,0,0,325"
+                                Background="Transparent"
+                                Foreground="White"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="40"
+                                Content="&#xE768;"
+                                Visibility="Visible"
+                                Height="100"
+                                Width="100"
+                                CornerRadius="60"
+                                Command="{x:Bind ShowSeasonViewModel.PosterPlayButtonClickCommand}"
+                                CommandParameter="{x:Bind ShowSeasonViewModel.MediaPath}"
+                                />-->
+
+        <StackPanel x:Name="MediaDetails"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="4,4,8,8"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    BorderBrush="DarkGoldenrod"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+
+            <TextBlock x:Name="textTitle"
+                            Grid.Row="1"
+                            Text="{x:Bind ArtistAlbumSongViewModel.MediaTitle}"
+                            TextWrapping="NoWrap"
+                            TextTrimming="CharacterEllipsis"
+                            Margin="0,0,0,0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            FontSize="26"
+                            Style="{StaticResource  BodyStrongTextBlockStyle}"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,6,0,0">
+
+                <TextBlock x:Name="textYear"
+                        Grid.Row="1"
+                        Text="{x:Bind ArtistAlbumSongViewModel.MediaYear}"
+                        Margin="0,2,0,8"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        FontSize="14"
+                        Style="{StaticResource  CaptionTextBlockStyle}"/>
+
+                <!--<Border Background="Black" 
+                        CornerRadius="10" 
+                        Margin="12,0,0,0"
+                        MinWidth="54"
+                        MinHeight="24">
+
+                        <TextBlock x:Name="textRating"
+                                Grid.Row="1"
+                                Text="{x:Bind ArtistAlbumViewModel.MediaRating}"
+                                Margin="0,6,0,6"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                FontSize="14"
+                                Style="{StaticResource  CaptionTextBlockStyle}"/>
+                    </Border>-->
+
+            </StackPanel>
+
+            <Grid x:Name="gridSummmary"
+                      Margin="0,0,0,8"
+                      Background="Black"
+                      Opacity=".65"
+                      CornerRadius="10">
+                <ScrollViewer x:Name="svSummary"
+                                  VerticalScrollMode="Auto"
+                                  HorizontalScrollMode="Disabled"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto"
+                                  MinHeight="210"
+                                  MaxHeight="210">
+                    <TextBlock x:Name="textSummary"
+                                   Grid.Row="1"
+                                   Canvas.ZIndex="1"
+                                   Text="{x:Bind ArtistAlbumSongViewModel.MediaSummary}"
+                                   TextWrapping="Wrap"
+                                   Margin="4,4,4,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   FontSize="16"
+                                   Foreground="White"
+                                   Width="auto"
+                                   Style="{StaticResource  BodyTextBlockStyle}"/>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"  />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Record Label:" />
+                <TextBlock x:Name="textStudio"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{x:Bind ArtistAlbumSongViewModel.MediaStudio}"
+                            TextWrapping="WrapWholeWords"
+                            TextTrimming="CharacterEllipsis"
+                            Margin="10,0,0,2"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            FontSize="13"
+                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Genre:" />
+                <TextBlock x:Name="textGenre"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{x:Bind ArtistAlbumSongViewModel.MediaGenre}"
+                            TextWrapping="WrapWholeWords"
+                            TextTrimming="CharacterEllipsis"
+                            Margin="10,0,0,2"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            FontSize="13"
+                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+
+            </Grid>
+
+        </StackPanel>
+        <!-- CornerRadius="20"
+             ItemClick="MediaArtistAlbumSongDataView_ItemClick"
+        -->
+        <ListView   x:Name="MediaArtistAlbumSongDataView"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    ItemsSource="{x:Bind ArtistAlbumSongViewModel.MediaMetaData, Mode=OneWay}"
+                    Margin="8,0,8,8"
+                    IsItemClickEnabled="true"
+                    CanDragItems="False"
+                    AllowDrop="False"
+                    CanReorderItems="False"
+                    SelectionMode="Single"
+                    ShowsScrollingPlaceholders="True" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    Background="Black"
+                    Opacity=".8"
+                    CornerRadius="14"
+                    ItemClick="MediaArtistAlbumSongDataView_ItemClick"
+                    >
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Metadata">
+                    <Grid BorderBrush="AliceBlue" BorderThickness="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="26" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Command="{StaticResource PlayCommand}"
+                             CommandParameter="{x:Bind}"
+                             ClickMode="Release"
+                             Click="PlayButton_Click"
+                             DataContext="{x:Bind}" -->
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+
+                            <Button x:Name="PlayButton"
+                                Margin="0,0,6,0"
+                                Background="White"
+                                Foreground="Black"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="10"
+                                Content="&#xE768;"
+                                Height="28"
+                                Width="34"
+                                CornerRadius="16"
+                                Visibility="Collapsed"   
+                                />
+
+                            <TextBlock  VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="4"
+                                        Text="{x:Bind index}"></TextBlock>
+
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Margin="4">
+                            <TextBlock Text="{x:Bind title}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Margin="4">
+                            <TextBlock Text="{x:Bind duration, Converter={StaticResource MediaSongDurationConverter} }"></TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <MediaPlayerElement x:Name="songPlayer"
+                            Margin="0,0,0,4"
+                            AreTransportControlsEnabled="true"
+                            Visibility="Visible"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Stretch"
+                            Width="auto"
+                            Height="114"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Opacity=".75"
+                            />
+
+    </Grid>
+</Page>

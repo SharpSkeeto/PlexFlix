@@ -1,0 +1,132 @@
+﻿<Window
+    x:Class="MyPlexManager.Windows.WindowShell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyPlexManager.Windows"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Grid.Resources>
+            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" 
+                          TintColor="{StaticResource SystemChromeMediumLowColor}"
+                          TintOpacity=".1"
+                          FallbackColor="{StaticResource SystemChromeMediumLowColor}" />
+        </Grid.Resources>
+        <Border
+            x:Name="AppTitleBar"
+            Canvas.ZIndex="1"
+            IsHitTestVisible="False"
+            VerticalAlignment="Top"
+            Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
+            Margin="48,0,0,0">
+            <Grid
+                Height="48"
+                Margin="2,0,0,0"
+                VerticalAlignment="Top"
+                Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="AppFontIcon"
+                    Width="20"
+                    Height="20"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Source="/Assets/plex-logo-44x44.png"
+                    />
+                <TextBlock
+                    Margin="12,0,0,0"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="{x:Bind GetAppTitleFromSystem()}"/>
+            </Grid>
+        </Border>
+
+        <!-- Background -->
+        <Image x:Name="BackGroundImage"
+               Margin="0,0,0,0"
+               Stretch="None"
+               Width="Auto"
+               Height="Auto"
+               Opacity="1"
+               Source="/Assets/MyPlex-Logo.png"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+
+        <ProgressRing x:Name="progressRing" 
+                      Grid.ColumnSpan="2"
+                      Height="60" 
+                      Width="60" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center" 
+                      Margin="0,0,0,0"
+                      Foreground="DarkOrange"
+                      Background="Transparent" 
+                      />
+
+        <NavigationView
+                x:Name="NavigationViewControl"
+                Margin="0,0,0,0"
+                Canvas.ZIndex="0"
+                IsTitleBarAutoPaddingEnabled="False"
+                AlwaysShowHeader="False"
+                IsSettingsVisible="True"
+                Header=" "
+                IsTabStop="False" 
+                IsBackButtonVisible="Auto"
+                Background="Transparent"
+                BackRequested="NavigationViewControl_BackRequested" 
+                ItemInvoked="NavigationViewControl_ItemInvoked"
+                Loaded="NavigationViewControl_Loaded">
+            <NavigationView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Margin="-40,-40,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="pageTitle"
+                                Background="Transparent"
+                                Height="30"
+                                VerticalAlignment="Top">
+                            <TextBlock x:Name="title" 
+                                    Style="{StaticResource TitleTextBlockStyle}"
+                                    FontSize="24"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding}"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" Tag="MyPlexManager.Views.HomePage" ToolTipService.ToolTip="Home" />
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Icon="Video" Content="Video Player" PointerReleased="MediaPlayer_PointerReleased" ToolTipService.ToolTip="MFM Implementation" />
+                <NavigationViewItem Icon="Video" Content="VLC Player" PointerReleased="VLCPlayer_PointerReleased" ToolTipService.ToolTip="VLC Implementation" />
+            </NavigationView.FooterMenuItems>
+            <Frame x:Name="ContentFrame"
+                   Padding="0,0,0,0"
+                   Background="Transparent"
+                   Navigated="ContentFrame_Navigated">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <DrillInNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+
+    </Grid>
+
+</Window>

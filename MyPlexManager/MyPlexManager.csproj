@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -11,7 +11,90 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>DCD09BD6E4A9444F83A87DC0A2B90309A87DD1AC</PackageCertificateThumbprint>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Never</AppxBundle>
+    <HoursBetweenUpdateChecks>168</HoursBetweenUpdateChecks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <!--<WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize>
+    <WindowsAppSDKBootstrapAutoInitializeOptions_OnNoMatch_ShowUI>false</WindowsAppSDKBootstrapAutoInitializeOptions_OnNoMatch_ShowUI>
+    <WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>false</WindowsAppSDKBootstrapAutoInitializeOptions_OnPackageIdentity_NoOp>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>-->
+    <!--<ApplicationIcon>Assets\appIcon.ico</ApplicationIcon>-->
+    <!--<WindowsPackageType>None</WindowsPackageType>-->
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Interfaces\IIncrementalLoadingBase.cs" />
+    <Compile Remove="MainWindow - Copy.xaml.cs" />
+    <Compile Remove="MainWindow.xaml.cs" />
+    <Compile Remove="Models\IPlexLibrary.cs" />
+    <Compile Remove="Models\IPlexLibraryLocation.cs" />
+    <Compile Remove="Models\MediaViewModel.cs" />
+    <Compile Remove="Models\test.cs" />
+    <Compile Remove="Services\IncrementalLoadingBase.cs" />
+    <Compile Remove="Services\VirtualIncrementalDataLoader.cs" />
+    <Compile Remove="ViewModels\ObservableCollection.cs" />
+    <Compile Remove="ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Assets\Button_Repeat_Blue_On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Butterfly.png" />
+    <None Remove="Assets\Button_Forward_Blue.png" />
+    <None Remove="Assets\Button_Forward_Blue2.png" />
+    <None Remove="Assets\Button_Fullscreen_Blue.png" />
+    <None Remove="Assets\Button_NoSound_Blue.png" />
+    <None Remove="Assets\Button_Pause_Blue.png" />
+    <None Remove="Assets\Button_Play_Blue.png" />
+    <None Remove="Assets\Button_Repeat_Blue.png" />
+    <None Remove="Assets\Button_Rewind_Blue.png" />
+    <None Remove="Assets\Button_Rewind_Blue2.png" />
+    <None Remove="Assets\Button_Sound_Blue.png" />
+    <None Remove="Assets\Button_Stop_Blue.png" />
+    <None Remove="Assets\LargeTile.scale-100.png" />
+    <None Remove="Assets\LargeTile.scale-125.png" />
+    <None Remove="Assets\LargeTile.scale-150.png" />
+    <None Remove="Assets\LargeTile.scale-200.png" />
+    <None Remove="Assets\LargeTile.scale-400.png" />
+    <None Remove="Assets\MooreFlix.scale-100.png" />
+    <None Remove="Assets\MooreFlix.scale-125.png" />
+    <None Remove="Assets\MooreFlix.scale-150.png" />
+    <None Remove="Assets\MooreFlix.scale-200.png" />
+    <None Remove="Assets\MooreFlix.scale-400.png" />
+    <None Remove="Assets\SmallTile.scale-100.png" />
+    <None Remove="Assets\SmallTile.scale-125.png" />
+    <None Remove="Assets\SmallTile.scale-150.png" />
+    <None Remove="Assets\SmallTile.scale-200.png" />
+    <None Remove="Assets\SmallTile.scale-400.png" />
+    <None Remove="Converters\Converters.xaml" />
+    <None Remove="MainWindow - Copy.xaml" />
+    <None Remove="MainWindow.xaml" />
+    <None Remove="MediaPlayer\MediaPlayerButton.xaml" />
+    <None Remove="UserControls\MediaPlayerControl.xaml" />
+    <None Remove="Views\AboutPage.xaml" />
+    <None Remove="Views\HomePage.xaml" />
+    <None Remove="Views\MediaArtistAlbumPage.xaml" />
+    <None Remove="Views\MediaArtistAlbumSongPage.xaml" />
+    <None Remove="Views\MediaArtistPage.xaml" />
+    <None Remove="Views\MediaMovieDetailPage.xaml" />
+    <None Remove="Views\MediaMoviePage.xaml" />
+    <None Remove="Views\MediaShowPage.xaml" />
+    <None Remove="Views\MediaShowSeasonEpisodePage.xaml" />
+    <None Remove="Views\MediaShowSeasonPage.xaml" />
+    <None Remove="Views\SettingsPage.xaml" />
+    <None Remove="VLCPage.xaml" />
+    <None Remove="Windows\WindowShell.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="MainWindow - Copy.xaml" />
+    <Page Remove="MainWindow.xaml" />
+  </ItemGroup>
   
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -19,17 +102,32 @@
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\plex-logo-44x44.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
-    <PackageReference Include="Plex.Api" Version="4.1.2" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="LibVLCSharp" Version="3.6.7" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221116.1">
+      <!--<IncludeAssets>build</IncludeAssets>-->
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="PInvoke.User32" Version="0.7.124" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="108.0.3" />
+    <PackageReference Include="RestSharp.Serializers.Xml" Version="108.0.3" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.17.4" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -45,6 +143,91 @@
     <Content Update="Assets\plex-logo-44x44.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaArtistAlbumSongPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaArtistAlbumPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaArtistPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaShowSeasonEpisodePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaShowSeasonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaShowPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaMovieDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaMoviePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MediaPlayer\MediaPlayerButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\VLCPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MediaPlayerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MediaPlayerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Windows\WindowShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Converters\Converters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 

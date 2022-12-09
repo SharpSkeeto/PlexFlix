@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="MediaPlayerControl.MediaPlayerButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MediaPlayerControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Name="ButtonImage">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Image x:Name="img"			 
+			   Source="{Binding Path=Source,ElementName=ButtonImage}"
+			   Stretch="Fill"
+               />
+    </Grid>
+</UserControl>
