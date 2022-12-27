@@ -1,9 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Caching.Memory;
 using MyPlexManager.Extensions;
-using MyPlexManager.Interfaces;
 using MyPlexManager.Models;
 using MyPlexManager.Services;
 
