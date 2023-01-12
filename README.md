@@ -9,10 +9,11 @@ I have learned to approach projects for learning is to:
 3.  make it more efficient
 4.  make it look good
 
-I'm still at step 1.  Maybe between step 1 and 2. :)
+I'm still at step 1.  Maybe between step 1 and 2. :smiley:
 
 
-### Screens
+### Sample Screen Shots  :point_down:
 ![Home Screen](https://user-images.githubusercontent.com/43736590/212181310-562ec441-23c6-4f97-a86f-4124d534eaca.png)
+
 
 ![Marvel Collection](https://user-images.githubusercontent.com/43736590/212182753-0f09112f-ab70-4b23-bf0c-245db85c584a.png)
