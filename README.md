@@ -1,9 +1,9 @@
 # Plex Flix (MyPlexManager)
 
 Personal project for learning WinUI 3 (XAML) and Plex APIs using my personal Plex server and content for data.
-There is a much room for improvement and learning.
+There is much room for improvement.
 
-I have learned to approach projects for learning is to:
+I have learned to approach projects for learning by:
 1.  get it to work
 2.  improve maintainability
 3.  make it more efficient
