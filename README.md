@@ -11,7 +11,7 @@ I have learned to approach projects for learning is to:
 
 I'm still at step 1.  :eyes:
 
-###To Dos
+### To Dos
 1.  Proper Plex authentication
 2.  Proper configuration functionality
 3.  Picture library support
