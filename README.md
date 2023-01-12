@@ -1,4 +1,4 @@
-# Plex Flix (MyPlexManager)
+# Plex Flix
 
 Personal project for learning WinUI 3 (XAML) and Plex APIs using my personal Plex server and content for data.
 There is much room for improvement.
