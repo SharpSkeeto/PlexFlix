@@ -11,7 +11,7 @@ I have learned to approach projects for learning is to:
 
 I'm still at step 1.  :eyes:
 
-
+---
 ### To Dos
 1.  Proper Plex authentication
 2.  Proper configuration functionality
@@ -19,7 +19,6 @@ I'm still at step 1.  :eyes:
 4.  Add lists to Home screen
 5.  Add recommends and collection views as sub navigation items
 6.  More things...
-
 
 ---
 ### Sample Screen Shots  :point_down:
