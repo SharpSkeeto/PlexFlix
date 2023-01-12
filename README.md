@@ -22,7 +22,7 @@ I'm still at step 1.  :eyes:
 
 ![Marvel Collection](https://user-images.githubusercontent.com/43736590/212182753-0f09112f-ab70-4b23-bf0c-245db85c584a.png)
 
-- Video Player (windows media player code sourced from [castorix WinUI3_MediaEngine](https://github.com/castorix/WinUI3_MediaEngine).  The final goal is to implement VLC as the player of choice.
+- Player (windows player sourced from [castorix repository](https://github.com/castorix/WinUI3_MediaEngine):thumbsup:.  The final goal is to implement VLC as the player of choice.
 
 
 ![VideoPlayer](https://user-images.githubusercontent.com/43736590/212185649-09754af7-a870-494f-b006-24bf22ca4593.png)
