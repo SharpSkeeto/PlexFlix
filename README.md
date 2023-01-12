@@ -18,7 +18,8 @@ I'm still at step 1.  :eyes:
 3.  Picture library support
 4.  Add lists to Home screen
 5.  Add recommends and collection views as sub navigation items
-6.  More things...
+6.  Remove the test player buttons above the settings menu item
+7.  More things...
 
 ---
 ### Sample Screen Shots  :point_down:
