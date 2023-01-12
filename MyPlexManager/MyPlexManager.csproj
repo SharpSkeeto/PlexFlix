@@ -43,6 +43,66 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Assets\Button_Repeat_Blue_On.png" />
+    <Content Remove="Assets\LargeTile.scale-100.png" />
+    <Content Remove="Assets\LargeTile.scale-125.png" />
+    <Content Remove="Assets\LargeTile.scale-150.png" />
+    <Content Remove="Assets\LargeTile.scale-200.png" />
+    <Content Remove="Assets\LargeTile.scale-400.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-lightunplated_targetsize-16.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-lightunplated_targetsize-24.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-lightunplated_targetsize-256.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-lightunplated_targetsize-32.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-lightunplated_targetsize-48.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-unplated_targetsize-16.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-unplated_targetsize-24.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-unplated_targetsize-256.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-unplated_targetsize-32.png" />
+    <Content Remove="Assets\plex-logo-44x44.altform-unplated_targetsize-48.png" />
+    <Content Remove="Assets\plex-logo-44x44.scale-125.png" />
+    <Content Remove="Assets\plex-logo-44x44.scale-150.png" />
+    <Content Remove="Assets\plex-logo-44x44.scale-200.png" />
+    <Content Remove="Assets\plex-logo-44x44.scale-400.png" />
+    <Content Remove="Assets\plex-logo-44x44.targetsize-16.png" />
+    <Content Remove="Assets\plex-logo-44x44.targetsize-24.png" />
+    <Content Remove="Assets\plex-logo-44x44.targetsize-256.png" />
+    <Content Remove="Assets\plex-logo-44x44.targetsize-32.png" />
+    <Content Remove="Assets\plex-logo-44x44.targetsize-48.png" />
+    <Content Remove="Assets\plex-logo.altform-lightunplated_targetsize-16.png" />
+    <Content Remove="Assets\plex-logo.altform-lightunplated_targetsize-24.png" />
+    <Content Remove="Assets\plex-logo.altform-lightunplated_targetsize-256.png" />
+    <Content Remove="Assets\plex-logo.altform-lightunplated_targetsize-32.png" />
+    <Content Remove="Assets\plex-logo.altform-lightunplated_targetsize-48.png" />
+    <Content Remove="Assets\plex-logo.altform-unplated_targetsize-16.png" />
+    <Content Remove="Assets\plex-logo.altform-unplated_targetsize-24.png" />
+    <Content Remove="Assets\plex-logo.altform-unplated_targetsize-256.png" />
+    <Content Remove="Assets\plex-logo.altform-unplated_targetsize-32.png" />
+    <Content Remove="Assets\plex-logo.altform-unplated_targetsize-48.png" />
+    <Content Remove="Assets\plex-logo.scale-100.png" />
+    <Content Remove="Assets\plex-logo.scale-125.png" />
+    <Content Remove="Assets\plex-logo.scale-150.png" />
+    <Content Remove="Assets\plex-logo.scale-200.png" />
+    <Content Remove="Assets\plex-logo.scale-400.png" />
+    <Content Remove="Assets\plex-logo.targetsize-16.png" />
+    <Content Remove="Assets\plex-logo.targetsize-24.png" />
+    <Content Remove="Assets\plex-logo.targetsize-256.png" />
+    <Content Remove="Assets\plex-logo.targetsize-32.png" />
+    <Content Remove="Assets\plex-logo.targetsize-48.png" />
+    <Content Remove="Assets\SmallTile.scale-100.png" />
+    <Content Remove="Assets\SmallTile.scale-125.png" />
+    <Content Remove="Assets\SmallTile.scale-150.png" />
+    <Content Remove="Assets\SplashScreen.scale-100.png" />
+    <Content Remove="Assets\SplashScreen.scale-125.png" />
+    <Content Remove="Assets\SplashScreen.scale-150.png" />
+    <Content Remove="Assets\SplashScreen.scale-400.png" />
+    <Content Remove="Assets\StoreLogo.scale-100.png" />
+    <Content Remove="Assets\StoreLogo.scale-125.png" />
+    <Content Remove="Assets\StoreLogo.scale-150.png" />
+    <Content Remove="Assets\StoreLogo.scale-200.png" />
+    <Content Remove="Assets\StoreLogo.scale-400.png" />
+    <Content Remove="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Remove="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Remove="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Remove="Assets\Wide310x150Logo.scale-400.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Butterfly.png" />
@@ -57,19 +117,9 @@
     <None Remove="Assets\Button_Rewind_Blue2.png" />
     <None Remove="Assets\Button_Sound_Blue.png" />
     <None Remove="Assets\Button_Stop_Blue.png" />
-    <None Remove="Assets\LargeTile.scale-100.png" />
-    <None Remove="Assets\LargeTile.scale-125.png" />
-    <None Remove="Assets\LargeTile.scale-150.png" />
-    <None Remove="Assets\LargeTile.scale-200.png" />
-    <None Remove="Assets\LargeTile.scale-400.png" />
-    <None Remove="Assets\MooreFlix.scale-100.png" />
-    <None Remove="Assets\MooreFlix.scale-125.png" />
-    <None Remove="Assets\MooreFlix.scale-150.png" />
-    <None Remove="Assets\MooreFlix.scale-200.png" />
-    <None Remove="Assets\MooreFlix.scale-400.png" />
-    <None Remove="Assets\SmallTile.scale-100.png" />
-    <None Remove="Assets\SmallTile.scale-125.png" />
-    <None Remove="Assets\SmallTile.scale-150.png" />
+    <None Remove="Assets\PlexFlixLogo.scale-125.png" />
+    <None Remove="Assets\PlexFlixLogo.scale-150.png" />
+    <None Remove="Assets\PlexFlixLogo.scale-200.png" />
     <None Remove="Assets\SmallTile.scale-200.png" />
     <None Remove="Assets\SmallTile.scale-400.png" />
     <None Remove="Converters\Converters.xaml" />
@@ -103,7 +153,6 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Assets\plex-logo-44x44.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -138,11 +187,6 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="Assets\plex-logo-44x44.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\MediaArtistAlbumSongPage.xaml">

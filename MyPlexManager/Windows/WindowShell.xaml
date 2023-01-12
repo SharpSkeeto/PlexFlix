@@ -37,7 +37,7 @@
                     Height="20"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Source="/Assets/plex-logo-44x44.png"
+                    Source="/Assets/plex-logo.png"
                     />
                 <TextBlock
                     Margin="12,0,0,0"
@@ -55,7 +55,7 @@
                Width="Auto"
                Height="Auto"
                Opacity="1"
-               Source="/Assets/MyPlex-Logo.png"
+               Source="/Assets/PlexFlixLogo.png"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                Visibility="Collapsed"/>

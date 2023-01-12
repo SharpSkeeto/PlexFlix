@@ -4064,7 +4064,7 @@ public class CMediaEngine : IMFMediaEngineNotify, IMFTimedTextNotify, IDisposabl
 
 	private async Task<string> GetLogo()
 	{
-		var uri = new System.Uri("ms-appx:///Assets/MyPlex-Logo.png");
+		var uri = new System.Uri("ms-appx:///Assets/PlexFlixLogo.png");
 		var storagefile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
 		return storagefile.Path;
 	}
