@@ -57,7 +57,7 @@ public partial class MediaMovieDetailViewModel
 			var mediaPath = context.MediaPath;
 			var newWindow = WindowHelper.CreateWindow();
 			IntPtr hwnd = WindowHelper.GetHwnd(newWindow);
-			newWindow.Title = $"Moore Flix - Now Playing: {context.MediaTitle}";
+			newWindow.Title = $"Plex Flix - Now Playing: {context.MediaTitle}";
 			newWindow.Content = new MediaPlayerPage(hwnd, BuildMediaUri(mediaPath!), newWindow.Title);
 			newWindow.Activate();
 			(App.Current as App)?.m_window?.Minimize();

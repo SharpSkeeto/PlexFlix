@@ -43,7 +43,7 @@ public sealed partial class WindowShell : Window
 
 	public string GetAppTitleFromSystem()
 	{
-		return "Moore Flix";
+		return "Plex Flix";
 	}
 
 	private void MediaPlayer_PointerReleased(object sender, PointerRoutedEventArgs e)

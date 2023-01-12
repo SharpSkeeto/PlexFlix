@@ -54,7 +54,7 @@ public partial class MediaShowSeasonEpisodeViewModel
 					string? mediaPath = firstPart?.key;
 					var newWindow = WindowHelper.CreateWindow();
 					IntPtr hwnd = WindowHelper.GetHwnd(newWindow);
-					newWindow.Title = $"Moore Flix - Now Playing: E{context.index} - {context.title}";
+					newWindow.Title = $"Plex Flix - Now Playing: E{context.index} - {context.title}";
 					newWindow.Content = new MediaPlayerPage(hwnd, BuildMediaUri(mediaPath!), newWindow.Title);
 					newWindow.Activate();
 					(App.Current as App)?.m_window?.Minimize();

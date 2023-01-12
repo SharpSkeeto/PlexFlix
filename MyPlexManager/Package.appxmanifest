@@ -33,10 +33,13 @@
       <uap:VisualElements
         DisplayName="MyPlexManager"
         Description="MyPlexManager"
-        BackgroundColor="transparent"
-        Square150x150Logo="Assets\MooreFlix.png" Square44x44Logo="Assets\plex-logo-44x44.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png"/>
+        BackgroundColor="transparent" Square150x150Logo="Assets\PlexFlix.png" Square44x44Logo="Assets\plex-logo.png">
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:DefaultTile ShortName="Plex Flix" Square71x71Logo="Assets\PlexFlix.png" Wide310x150Logo="Assets\PlexFlix.png" Square310x310Logo="Assets\PlexFlix.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
       </uap:VisualElements>
     </Application>
   </Applications>
