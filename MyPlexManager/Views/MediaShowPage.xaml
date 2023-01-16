@@ -1,5 +1,5 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. -->
-<!-- Licensed under the MIT License. See LICENSE in the project root for license information. -->
+<!--  Copyright (c) Microsoft Corporation. All rights reserved.  -->
+<!--  Licensed under the MIT License. See LICENSE in the project root for license information.  -->
 
 <Page
     x:Class="MyPlexManager.Views.MediaShowPage"
@@ -7,13 +7,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    NavigationCacheMode="Disabled"
-    Background="{ThemeResource MyAcrylicBrush}"
     xmlns:models="using:MyPlexManager.Models"
-    xmlns:views="using:MyPlexManager.Views"
     xmlns:viewmodels="using:MyPlexManager.ViewModels"
-    d:DataContext="{d:DesignInstance Type=viewmodels:MediaShowViewModel}">
+    xmlns:views="using:MyPlexManager.Views"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MediaShowViewModel}"
+    Background="{ThemeResource MyAcrylicBrush}"
+    NavigationCacheMode="Disabled"
+    mc:Ignorable="d">
 
     <Page.Resources>
         <SolidColorBrush x:Key="GridViewItemBackgroundPointerOver" Color="DarkGoldenrod" />
@@ -23,11 +23,12 @@
         <SolidColorBrush x:Key="GridViewItemBackgroundSelectedPointerOver" Color="DarkOrange" />
         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DodgerBlue" />
 
-        <DataTemplate x:DataType="models:Metadata" x:Name="showTemplate">
+        <DataTemplate x:Name="showTemplate" x:DataType="models:Metadata">
 
-            <StackPanel Margin="8,8,8,8"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top">
+            <StackPanel
+                Margin="8,8,8,8"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
 
                 <Grid>
 
@@ -37,60 +38,44 @@
                         <RowDefinition Height="14" />
                     </Grid.RowDefinitions>
 
-                    <Image x:Name="posterImage"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Height="auto"
-                                   MinHeight="150"
-                                   Width="auto"
-                                   Grid.Row="0"
-                                   IsHitTestVisible="True"
-                                   DataContext="{x:Bind}">
+                    <Image
+                        x:Name="posterImage"
+                        Grid.Row="0"
+                        Width="auto"
+                        Height="auto"
+                        MinHeight="150"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        DataContext="{x:Bind}"
+                        IsHitTestVisible="True">
                         <Image.Source>
-                            <BitmapImage UriSource="{x:Bind thumb}"
-                                             DecodePixelHeight="200" />
+                            <BitmapImage DecodePixelHeight="200" UriSource="{x:Bind thumb}" />
                         </Image.Source>
                     </Image>
 
-                    <!--<Button x:Name="PosterPlayButton"
-                                Grid.Row="0"
-                                Margin="1"
-                                Background="Transparent"
-                                Foreground="White"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Segoe MDL2 Assets"
-                                FontSize="25"
-                                Content="&#xE768;"
-                                Visibility="Visible"
-                                Height="65"
-                                Width="65"
-                                CornerRadius="40"
-                                Click="PosterPlayButton_Click" 
-                                DataContext="{x:Bind}"
-                                />-->
+                    <TextBlock
+                        x:Name="mediaTitle"
+                        Grid.Row="1"
+                        MaxWidth="125"
+                        Margin="0,4,0,4"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                        Text="{x:Bind title}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
 
-                    <TextBlock x:Name="mediaTitle"
-                                       Grid.Row="1"
-                                       Text="{x:Bind title}"
-                                       TextWrapping="NoWrap"
-                                       TextTrimming="CharacterEllipsis"
-                                       Margin="0,4,0,4"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       MaxWidth="125"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"/>
-
-                    <TextBlock x:Name="mediaSeason"
-                                       Grid.Row="2"
-                                       Text="{x:Bind childCount, Converter={StaticResource MediaShowSeasonCountConverter}}"
-                                       TextWrapping="NoWrap"
-                                       TextTrimming="CharacterEllipsis"
-                                       Margin="0,0,0,0"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       MaxWidth="125"
-                                       Style="{StaticResource CaptionTextBlockStyle }"/>
+                    <TextBlock
+                        x:Name="mediaSeason"
+                        Grid.Row="2"
+                        MaxWidth="125"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind childCount, Converter={StaticResource MediaShowSeasonCountConverter}}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
                 </Grid>
 
             </StackPanel>
@@ -106,103 +91,100 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top"
-                    BorderBrush="AliceBlue"
-                    BorderThickness="0">
+        <StackPanel
+            Grid.Row="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            BorderBrush="AliceBlue"
+            BorderThickness="0"
+            Orientation="Horizontal">
 
             <TextBlock
-                TextWrapping="Wrap"
-                VerticalAlignment="Top"
+                Margin="10,10,0,0"
                 HorizontalAlignment="Left"
-                Margin="10 10 0 0"
-                FontSize="20"
-                Text="{x:Bind ShowViewModel.PageTitle ,Mode=OneWay}">
-            </TextBlock>
-
-            <TextBlock 
-                TextWrapping="Wrap"
                 VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Margin="2 10 0 0"
                 FontSize="20"
-                Text=":">
-            </TextBlock>
+                Text="{x:Bind ShowViewModel.PageTitle, Mode=OneWay}"
+                TextWrapping="Wrap" />
 
             <TextBlock
-                TextWrapping="Wrap"
-                VerticalAlignment="Top"
+                Margin="2,10,0,0"
                 HorizontalAlignment="Left"
-                Margin="6 10 0 0"
+                VerticalAlignment="Top"
                 FontSize="20"
+                Text=":"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                Margin="6,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="20"
+                Foreground="DarkOrange"
                 IsColorFontEnabled="True"
-                Foreground="DarkOrange" 
-                Text="{x:Bind ShowViewModel.LibrarySize, Mode=OneWay}">
-            </TextBlock>
+                Text="{x:Bind ShowViewModel.LibrarySize, Mode=OneWay}"
+                TextWrapping="Wrap" />
 
-            <TextBlock 
-                TextWrapping="Wrap"
-                VerticalAlignment="Top"
+            <TextBlock
+                Margin="6,10,0,0"
                 HorizontalAlignment="Left"
-                Margin="6 10 0 0"
+                VerticalAlignment="Top"
                 FontSize="20"
-                Text="shows">
-            </TextBlock>
+                Text="shows"
+                TextWrapping="Wrap" />
 
         </StackPanel>
 
-        <StackPanel Grid.Row="0"
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top">
-            <TextBox x:Name="FilterTitle"
-                     Width="325"
-                     PlaceholderText="Filter by Title"
-                     Margin="0,6,24,0"
-                     HorizontalAlignment="Right"
-                     VerticalAlignment="Bottom"
-                     TextChanged="FilterTitle_TextChanged"
-                     />
+        <StackPanel
+            Grid.Row="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="FilterTitle"
+                Width="325"
+                Margin="0,6,24,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                PlaceholderText="Filter by Title"
+                TextChanged="FilterTitle_TextChanged" />
         </StackPanel>
 
-        <ProgressRing x:Name="progressRing" 
-                      Grid.RowSpan="2"
-                      Height="60" 
-                      Width="60" 
-                      HorizontalAlignment="Center" 
-                      VerticalAlignment="Center" 
-                      Margin="0,0,0,0"
-                      Foreground="DarkOrange"
-                      Background="Transparent" 
-                      />
+        <ProgressRing
+            x:Name="progressRing"
+            Grid.RowSpan="2"
+            Width="60"
+            Height="60"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Transparent"
+            Foreground="DarkOrange" />
 
-        <GridView   x:Name="MediaShowsMetaDataView"
-                    Grid.Row="1"
-                    ItemsSource="{x:Bind ShowViewModel.FilteredMediaMetaData, Mode=OneWay}"
-                    ItemTemplate="{StaticResource showTemplate}"
-                    Margin="8,0,0,8"
-                    IsItemClickEnabled="True"
-                    CanDragItems="False"
-                    AllowDrop="False"
-                    CanReorderItems="False"
-                    SelectionMode="Single"
-                    FlowDirection="LeftToRight"
-                    IncrementalLoadingTrigger="Edge"
-                    IncrementalLoadingThreshold="4"
-                    ScrollViewer.IsVerticalScrollChainingEnabled="True"
-                    ScrollViewer.IsHorizontalScrollChainingEnabled="True"
-                    ShowsScrollingPlaceholders="True" 
-                    DataFetchSize="50"
-                    Height="auto"
-                    Width="auto"
-                    MinHeight="650"
-                    MinWidth="450"
-                    ItemClick="MediaShowsMetaDataView_ItemClick">
-
-        </GridView>
+        <GridView
+            x:Name="MediaShowsMetaDataView"
+            Grid.Row="1"
+            Width="auto"
+            Height="auto"
+            MinWidth="450"
+            MinHeight="650"
+            Margin="8,0,0,8"
+            AllowDrop="False"
+            CanDragItems="False"
+            CanReorderItems="False"
+            DataFetchSize="50"
+            FlowDirection="LeftToRight"
+            IncrementalLoadingThreshold="4"
+            IncrementalLoadingTrigger="Edge"
+            IsItemClickEnabled="True"
+            ItemClick="MediaShowsMetaDataView_ItemClick"
+            ItemTemplate="{StaticResource showTemplate}"
+            ItemsSource="{x:Bind ShowViewModel.FilteredMediaMetaData, Mode=OneWay}"
+            ScrollViewer.IsHorizontalScrollChainingEnabled="True"
+            ScrollViewer.IsVerticalScrollChainingEnabled="True"
+            SelectionMode="Single"
+            ShowsScrollingPlaceholders="True" />
 
     </Grid>
-    
+
 </Page>

@@ -1,5 +1,5 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. -->
-<!-- Licensed under the MIT License. See LICENSE in the project root for license information. -->
+<!--  Copyright (c) Microsoft Corporation. All rights reserved.  -->
+<!--  Licensed under the MIT License. See LICENSE in the project root for license information.  -->
 
 <Page
     x:Class="MyPlexManager.Views.MediaShowSeasonPage"
@@ -7,13 +7,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    NavigationCacheMode="Disabled"
-    Background="{ThemeResource MyAcrylicBrush}"
     xmlns:models="using:MyPlexManager.Models"
-    xmlns:views="using:MyPlexManager.Views"
     xmlns:viewmodels="using:MyPlexManager.ViewModels"
-    d:DataContext="{d:DesignInstance Type=viewmodels:MediaShowSeasonViewModel}">
+    xmlns:views="using:MyPlexManager.Views"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MediaShowSeasonViewModel}"
+    Background="{ThemeResource MyAcrylicBrush}"
+    NavigationCacheMode="Disabled"
+    mc:Ignorable="d">
 
     <Page.Resources>
         <SolidColorBrush x:Key="GridViewItemBackgroundPointerOver" Color="DarkGoldenrod" />
@@ -23,11 +23,12 @@
         <SolidColorBrush x:Key="GridViewItemBackgroundSelectedPointerOver" Color="DarkOrange" />
         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DodgerBlue" />
 
-        <DataTemplate x:DataType="models:Metadata" x:Name="showSeasonTemplate">
+        <DataTemplate x:Name="showSeasonTemplate" x:DataType="models:Metadata">
 
-            <StackPanel Margin="8,8,8,8"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
+            <StackPanel
+                Margin="8,8,8,8"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
 
                 <Grid>
 
@@ -37,60 +38,44 @@
                         <RowDefinition Height="14" />
                     </Grid.RowDefinitions>
 
-                    <Image x:Name="posterImage"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Height="auto"
-                                   MinHeight="150"
-                                   Width="auto"
-                                   Grid.Row="0"
-                                   IsHitTestVisible="True"
-                                   DataContext="{x:Bind}">
+                    <Image
+                        x:Name="posterImage"
+                        Grid.Row="0"
+                        Width="auto"
+                        Height="auto"
+                        MinHeight="150"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        DataContext="{x:Bind}"
+                        IsHitTestVisible="True">
                         <Image.Source>
-                            <BitmapImage UriSource="{x:Bind thumb}"
-                                         DecodePixelHeight="200" />
+                            <BitmapImage DecodePixelHeight="200" UriSource="{x:Bind thumb}" />
                         </Image.Source>
                     </Image>
 
-                    <!--<Button x:Name="PosterPlayButton"
-                                Grid.Row="0"
-                                Margin="1"
-                                Background="Transparent"
-                                Foreground="White"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Segoe MDL2 Assets"
-                                FontSize="25"
-                                Content="&#xE768;"
-                                Visibility="Visible"
-                                Height="65"
-                                Width="65"
-                                CornerRadius="40"
-                                Click="PosterPlayButton_Click" 
-                                DataContext="{x:Bind}"
-                                />-->
+                    <TextBlock
+                        x:Name="mediaTitle"
+                        Grid.Row="1"
+                        MaxWidth="125"
+                        Margin="0,4,0,4"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                        Text="{x:Bind title}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
 
-                    <TextBlock x:Name="mediaTitle"
-                                       Grid.Row="1"
-                                       Text="{x:Bind title}"
-                                       TextWrapping="NoWrap"
-                                       TextTrimming="CharacterEllipsis"
-                                       Margin="0,4,0,4"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       MaxWidth="125"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"/>
-
-                    <TextBlock x:Name="mediaSeason"
-                                       Grid.Row="2"
-                                       Text="{x:Bind leafCount, Converter={StaticResource MediaShowEpisodeCountConverter}}"
-                                       TextWrapping="NoWrap"
-                                       TextTrimming="CharacterEllipsis"
-                                       Margin="0,0,0,0"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       MaxWidth="125"
-                                       Style="{StaticResource CaptionTextBlockStyle }"/>
+                    <TextBlock
+                        x:Name="mediaSeason"
+                        Grid.Row="2"
+                        MaxWidth="125"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind leafCount, Converter={StaticResource MediaShowEpisodeCountConverter}}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
                 </Grid>
 
             </StackPanel>
@@ -99,11 +84,12 @@
 
     </Page.Resources>
 
-    <ScrollViewer x:Name="showSeasonViewer"
-                  HorizontalScrollMode="Disabled"
-                  HorizontalScrollBarVisibility="Disabled"
-                  VerticalScrollMode="Enabled"
-                  VerticalScrollBarVisibility="Auto">
+    <ScrollViewer
+        x:Name="showSeasonViewer"
+        HorizontalScrollBarVisibility="Disabled"
+        HorizontalScrollMode="Disabled"
+        VerticalScrollBarVisibility="Auto"
+        VerticalScrollMode="Enabled">
 
         <Grid ColumnSpacing="10">
             <Grid.RowDefinitions>
@@ -112,146 +98,129 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"  />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <ProgressRing x:Name="progressRing" 
-                    Grid.RowSpan="3"
-                    Grid.ColumnSpan="2"
-                    Height="60" 
-                    Width="60" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Margin="0,0,0,0"
-                    Foreground="DarkOrange"
-                    Background="Transparent"
-                    Visibility="Visible"
-                    Canvas.ZIndex="1"
-                    />
+            <ProgressRing
+                x:Name="progressRing"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2"
+                Width="60"
+                Height="60"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                Canvas.ZIndex="1"
+                Foreground="DarkOrange"
+                Visibility="Visible" />
 
-            <StackPanel x:Name="MediaDetailPoster"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Margin="16,8,8,8"
-                    Background="Transparent"
+            <StackPanel
+                x:Name="MediaDetailPoster"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="16,8,8,8"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent">
+                <StackPanel
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
-                <StackPanel CornerRadius="10"
+                    VerticalAlignment="Top"
+                    CornerRadius="10">
+                    <Image
+                        x:Name="posterImage"
+                        Height="375"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
-                    <Image x:Name="posterImage"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            Height="375"
-                            IsHitTestVisible="True">
+                        VerticalAlignment="Top"
+                        IsHitTestVisible="True">
                         <Image.Source>
-                            <BitmapImage UriSource="{x:Bind ShowSeasonViewModel.MediaThumbNailUri}"
-                                     DecodePixelHeight="400" />
+                            <BitmapImage DecodePixelHeight="400" UriSource="{x:Bind ShowSeasonViewModel.MediaThumbNailUri}" />
                         </Image.Source>
                     </Image>
 
                 </StackPanel>
             </StackPanel>
 
-            <!--
-        DataContext="{x:Bind}"
-        Click="PosterPlayButton_Click"
-        DataContext="{x:Bind DetailViewModel.MediaPath}"
-        -->
-            <!--<Button x:Name="PosterPlayButton"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Margin="0,0,0,325"
-                                Background="Transparent"
-                                Foreground="White"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Segoe MDL2 Assets"
-                                FontSize="40"
-                                Content="&#xE768;"
-                                Visibility="Visible"
-                                Height="100"
-                                Width="100"
-                                CornerRadius="60"
-                                Command="{x:Bind ShowSeasonViewModel.PosterPlayButtonClickCommand}"
-                                CommandParameter="{x:Bind ShowSeasonViewModel.MediaPath}"
-                                />-->
+            <StackPanel
+                x:Name="MediaDetails"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="8,8,8,8"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                BorderBrush="DarkGoldenrod"
+                BorderThickness="0">
 
-
-            <StackPanel x:Name="MediaDetails"
+                <TextBlock
+                    x:Name="textTitle"
                     Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="8,8,8,8"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    BorderBrush="DarkGoldenrod"
+                    Margin="0,0,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
+                    VerticalAlignment="Top"
+                    FontSize="26"
+                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                    Text="{x:Bind ShowSeasonViewModel.MediaTitle}"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="NoWrap" />
 
-                <TextBlock x:Name="textTitle"
-                            Grid.Row="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaTitle}"
-                            TextWrapping="NoWrap"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="0,0,0,0"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="26"
-                            Style="{StaticResource  BodyStrongTextBlockStyle}"/>
+                <StackPanel Margin="0,6,0,0" Orientation="Horizontal">
 
-                <StackPanel Orientation="Horizontal"
-                            Margin="0,6,0,0">
-                    
-                    <TextBlock x:Name="textYear"
-                            Grid.Row="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaYear}"
-                            Margin="0,8,0,0"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="14"
-                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+                    <TextBlock
+                        x:Name="textYear"
+                        Grid.Row="1"
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="14"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind ShowSeasonViewModel.MediaYear}" />
 
-                    <Border Background="Black" 
-                        CornerRadius="10" 
-                        Margin="12,0,0,0"
+                    <Border
                         MinWidth="54"
-                        MinHeight="24">
-                        
-                        <TextBlock x:Name="textRating"
-                                Grid.Row="1"
-                                Text="{x:Bind ShowSeasonViewModel.MediaRating}"
-                                Margin="0,6,0,6"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                FontSize="14"
-                                Style="{StaticResource  CaptionTextBlockStyle}"/>
+                        MinHeight="24"
+                        Margin="12,0,0,0"
+                        Background="Black"
+                        CornerRadius="10">
+
+                        <TextBlock
+                            x:Name="textRating"
+                            Grid.Row="1"
+                            Margin="0,6,0,6"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Style="{StaticResource CaptionTextBlockStyle}"
+                            Text="{x:Bind ShowSeasonViewModel.MediaRating}" />
                     </Border>
 
                 </StackPanel>
 
-                <TextBlock x:Name="textTagline"
-                            Grid.Row="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaTagline}"
-                            TextWrapping="WrapWholeWords"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="0,24,0,6"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="18"
-                            FontStyle="Oblique"
-                            Style="{StaticResource  SubtitleTextBlockStyle}"/>
+                <TextBlock
+                    x:Name="textTagline"
+                    Grid.Row="1"
+                    Margin="0,24,0,6"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="18"
+                    FontStyle="Oblique"
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Text="{x:Bind ShowSeasonViewModel.MediaTagline}"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="WrapWholeWords" />
 
-                <TextBlock x:Name="textSummary"
-                            Grid.Row="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaSummary}"
-                            TextWrapping="WrapWholeWords"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="0,24,0,28"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="16"
-                            Style="{StaticResource  BodyTextBlockStyle}"/>
+                <TextBlock
+                    x:Name="textSummary"
+                    Grid.Row="1"
+                    Margin="0,24,0,28"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="{x:Bind ShowSeasonViewModel.MediaSummary}"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="WrapWholeWords" />
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -263,113 +232,131 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"  />
+                        <ColumnDefinition Width="auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Cast:" />
-                    <TextBlock x:Name="textRoles"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaRoles}"
-                            TextWrapping="WrapWholeWords"
-                            Margin="10,0,0,2"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="13"
-                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Cast:" />
+                    <TextBlock
+                        x:Name="textRoles"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10,0,0,2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind ShowSeasonViewModel.MediaRoles}"
+                        TextWrapping="WrapWholeWords" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Studio:" />
-                    <TextBlock x:Name="textStudio"
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaStudio}"
-                            TextWrapping="WrapWholeWords"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="10,0,0,2"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="13"
-                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Studio:" />
+                    <TextBlock
+                        x:Name="textStudio"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="10,0,0,2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind ShowSeasonViewModel.MediaStudio}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="WrapWholeWords" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Genre:" />
-                    <TextBlock x:Name="textGenre"
-                            Grid.Row="4"
-                            Grid.Column="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaGenre}"
-                            TextWrapping="WrapWholeWords"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="10,0,0,2"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="13"
-                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Genre:" />
+                    <TextBlock
+                        x:Name="textGenre"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="10,0,0,2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind ShowSeasonViewModel.MediaGenre}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="WrapWholeWords" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Release Date:" />
-                    <TextBlock x:Name="textReleaseDate"
-                            Grid.Row="5"
-                            Grid.Column="1"
-                            Text="{x:Bind ShowSeasonViewModel.MediaReleaseDate}"
-                            TextWrapping="WrapWholeWords"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="10,0,0,2"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="13"
-                            Style="{StaticResource  CaptionTextBlockStyle}"/>
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Text="Release Date:" />
+                    <TextBlock
+                        x:Name="textReleaseDate"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="10,0,0,2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Style="{StaticResource CaptionTextBlockStyle}"
+                        Text="{x:Bind ShowSeasonViewModel.MediaReleaseDate}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="WrapWholeWords" />
 
                 </Grid>
 
             </StackPanel>
 
-            <StackPanel x:Name="seasonDetails"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Margin="16,0,0,0"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    BorderBrush="DarkGoldenrod"
+            <StackPanel
+                x:Name="seasonDetails"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="16,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                BorderBrush="DarkGoldenrod"
+                BorderThickness="0">
+
+                <TextBlock
+                    x:Name="textSeasons"
+                    Grid.Row="1"
+                    Margin="0,0,0,4"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
+                    VerticalAlignment="Top"
+                    FontSize="16"
+                    Style="{StaticResource BodyTextBlockStyle}"
+                    Text="Seasons"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="WrapWholeWords" />
 
-                <TextBlock x:Name="textSeasons"
-                            Grid.Row="1"
-                            Text="Seasons"
-                            TextWrapping="WrapWholeWords"
-                            TextTrimming="CharacterEllipsis"
-                            Margin="0,0,0,4"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            FontSize="16"
-                            Style="{StaticResource  BodyTextBlockStyle}"/>
-
-                <GridView x:Name="seasons"
-                      Grid.Row="1"
-                      Margin="0,0,0,0"
-                      ItemsSource="{x:Bind ShowSeasonViewModel.MediaMetaData}"
-                      ItemTemplate="{StaticResource showSeasonTemplate}"
-                      IsItemClickEnabled="True"
-                      CanDragItems="False"
-                      AllowDrop="False"
-                      CanReorderItems="False"
-                      SelectionMode="Single"
-                      FlowDirection="LeftToRight"
-                      IncrementalLoadingTrigger="Edge"
-                      IncrementalLoadingThreshold="4"
-                      ScrollViewer.IsVerticalScrollChainingEnabled="True"
-                      ScrollViewer.IsHorizontalScrollChainingEnabled="True"
-                      ShowsScrollingPlaceholders="True" 
-                      DataFetchSize="50"
-                      Height="auto"
-                      Width="auto"
-                      ItemClick="seasons_ItemClick">
-                </GridView>
+                <GridView
+                    x:Name="seasons"
+                    Grid.Row="1"
+                    Width="auto"
+                    Height="auto"
+                    Margin="0,0,0,0"
+                    AllowDrop="False"
+                    CanDragItems="False"
+                    CanReorderItems="False"
+                    DataFetchSize="50"
+                    FlowDirection="LeftToRight"
+                    IncrementalLoadingThreshold="4"
+                    IncrementalLoadingTrigger="Edge"
+                    IsItemClickEnabled="True"
+                    ItemClick="seasons_ItemClick"
+                    ItemTemplate="{StaticResource showSeasonTemplate}"
+                    ItemsSource="{x:Bind ShowSeasonViewModel.MediaMetaData}"
+                    ScrollViewer.IsHorizontalScrollChainingEnabled="True"
+                    ScrollViewer.IsVerticalScrollChainingEnabled="True"
+                    SelectionMode="Single"
+                    ShowsScrollingPlaceholders="True" />
 
             </StackPanel>
 
         </Grid>
-        
+
     </ScrollViewer>
-    
+
 </Page>

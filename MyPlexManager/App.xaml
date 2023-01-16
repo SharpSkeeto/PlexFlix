@@ -7,35 +7,36 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Other merged dictionaries here -->
+                <!--  Other merged dictionaries here  -->
                 <ResourceDictionary Source="ms-appx:///Converters/Converters.xaml" />
 
-                
+
             </ResourceDictionary.MergedDictionaries>
-            
-            <!-- Other app resources here -->
+
+            <!--  Other app resources here  -->
             <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
 
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
-                    <AcrylicBrush x:Key="MyAcrylicBrush" 
-                                TintColor="Black"
-                                TintOpacity="0.1"
-                                TintLuminosityOpacity="0.1"
-                                FallbackColor="DarkGray"/>
+                    <AcrylicBrush
+                        x:Key="MyAcrylicBrush"
+                        FallbackColor="DarkGray"
+                        TintColor="Black"
+                        TintLuminosityOpacity="0.1"
+                        TintOpacity="0.1" />
                 </ResourceDictionary>
 
-                <ResourceDictionary     x:Key="HighContrast">
-                    <SolidColorBrush    x:Key="MyAcrylicBrush"
-                                        Color="{ThemeResource SystemColorWindowColor}"/>
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="MyAcrylicBrush" Color="{ThemeResource SystemColorWindowColor}" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Light">
-                    <AcrylicBrush   x:Key="MyAcrylicBrush"
-                                    TintColor="LightGray"
-                                    TintOpacity="0.8"
-                                    TintLuminosityOpacity="0.5"
-                                    FallbackColor="AntiqueWhite"/>
+                    <AcrylicBrush
+                        x:Key="MyAcrylicBrush"
+                        FallbackColor="AntiqueWhite"
+                        TintColor="LightGray"
+                        TintLuminosityOpacity="0.5"
+                        TintOpacity="0.8" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
