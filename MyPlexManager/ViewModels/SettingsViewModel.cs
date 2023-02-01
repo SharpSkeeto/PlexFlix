@@ -7,9 +7,7 @@ using MyPlexManager.Services;
 
 namespace MyPlexManager.ViewModels;
 
-
-[ObservableObject]
-public partial class SettingsViewModel
+public partial class SettingsViewModel : ObservableObject
 {
 	private readonly IAppSettings? _appSettings;
 	private readonly IMemoryCache? _memoryCache;
@@ -46,7 +44,7 @@ public partial class SettingsViewModel
 	string? productVersion;
 	[ObservableProperty]
 	string? productName;
-
+	
 	[RelayCommand]
 	void RefreshCacheButtonClick(object paramenter)
 	{
@@ -68,22 +66,22 @@ public partial class SettingsViewModel
 
 	public void InitializeSettingsData()
 	{
-		pageTitle = "Settings";
-		userId = _appSettings?.UserName;
-		userToken = _appSettings?.Token;
-		userEmail = _appSettings?.Email;
-		userThumbNail = _appSettings?.ThumbNail;
-		serverName = _appSettings?.ServerName;
-		serverProtocol = _appSettings?.Protocol;
-		serverAddress = _appSettings?.Address;
-		serverPort = _appSettings?.Port;
-		serverUri = _appSettings?.ServerUri;
-		machineId = _appSettings?.MachineId;
-		device = _appSettings?.Device;
-		platform = _appSettings?.Platform;
-		platformVersion = _appSettings?.PlatformVersion;
-		productVersion = _appSettings?.ProductVersion;
-		productName = _appSettings?.ProductName;
+		PageTitle = "Settings";
+		UserId = _appSettings?.UserName;
+		UserToken = _appSettings?.Token;
+		UserEmail = _appSettings?.Email;
+		UserThumbNail = _appSettings?.ThumbNail;
+		ServerName = _appSettings?.ServerName;
+		ServerProtocol = _appSettings?.Protocol;
+		ServerAddress = _appSettings?.Address;
+		ServerPort = _appSettings?.Port;
+		ServerUri = _appSettings?.ServerUri;
+		MachineId = _appSettings?.MachineId;
+		Device = _appSettings?.Device;
+		Platform = _appSettings?.Platform;
+		PlatformVersion = _appSettings?.PlatformVersion;
+		ProductVersion = _appSettings?.ProductVersion;
+		ProductName = _appSettings?.ProductName;
 	}
 
 	private IAppSettings UpdateSettings()
@@ -93,15 +91,15 @@ public partial class SettingsViewModel
 
 		var appSettings = new AppSettings()
 		{
-			Address = serverAddress,
-			Port = serverPort,
-			Email = userEmail,
-			ThumbNail = userThumbNail,
-			MachineId = machineId,
-			Protocol = serverProtocol,
-			ServerUri = $"{serverProtocol}://{serverAddress}:{serverPort}",
-			Token = userToken,
-			UserName = userId
+			Address = ServerAddress,
+			Port = ServerPort,
+			Email = UserEmail,
+			ThumbNail = UserThumbNail,
+			MachineId = MachineId,
+			Protocol = ServerProtocol,
+			ServerUri = $"{ServerProtocol}://{ServerAddress}:{ServerPort}",
+			Token = UserToken,
+			UserName = UserId
 		};
 
 		return appSettingsService.UpdateApplicationSettings(appSettings);

@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaArtistAlbumViewModel
+public partial class MediaArtistAlbumViewModel : ObservableObject
 {
 	private readonly INavigationService _navigationService;
 	private readonly IPlexApiService _plexApiClient;
@@ -43,15 +42,15 @@ public partial class MediaArtistAlbumViewModel
 	public async Task GetArtistAlbumDataAsync(object selectedItem)
 	{
 		var item = (Metadata)selectedItem;
-		mediaThumbNailUri = item.thumb;
-		mediaTitle = item.title;
-		mediaYear = item.year;
-		mediaSummary = item.summary?.Replace(System.Environment.NewLine, System.Environment.NewLine+System.Environment.NewLine)!;
+		MediaThumbNailUri = item.thumb;
+		MediaTitle = item.title;
+		MediaYear = item.year;
+		MediaSummary = item.summary?.Replace(System.Environment.NewLine, System.Environment.NewLine+System.Environment.NewLine)!;
 		if (item.Country is not null)
-			mediaCountry = string.Join(", ", item.Country?.Select(t => t.tag)!);
+			MediaCountry = string.Join(", ", item.Country?.Select(t => t.tag)!);
 
 		if (item.Genre is not null)
-			mediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
+			MediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
 		
 		PlexMediaLibraryItems? plexMediaLibraryItems = null;
 		MediaMetaData?.Clear();

@@ -15,8 +15,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaArtistViewModel
+public partial class MediaArtistViewModel : ObservableObject
 {
 
 	private readonly INavigationService _navigationService;
@@ -43,7 +42,7 @@ public partial class MediaArtistViewModel
 	public async Task InitializeMediaArtistDataAsync(object selectedItem)
 	{
 		var item = (Directory)selectedItem;
-		pageTitle = item.title!;
+		PageTitle = item.title!;
 		await PopulateLibraryAsync(item.key!);
 	}
 

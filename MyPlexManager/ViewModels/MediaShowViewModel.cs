@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaShowViewModel
+public partial class MediaShowViewModel : ObservableObject
 {
 	
 	private readonly IPlexApiService _plexApiClient;
@@ -38,7 +37,7 @@ public partial class MediaShowViewModel
 	public async Task InitializeMediaDetailDataAsync(object selectedItem)
 	{
 		var item = (Directory)selectedItem;
-		pageTitle = item.title!;
+		PageTitle = item.title!;
 		await PopulateLibraryAsync(item.key!);
 	}
 
