@@ -14,8 +14,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaShowSeasonEpisodeViewModel
+public partial class MediaShowSeasonEpisodeViewModel : ObservableObject
 {
 
 	private readonly INavigationService _navigationService;

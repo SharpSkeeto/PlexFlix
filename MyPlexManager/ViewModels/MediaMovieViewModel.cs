@@ -15,8 +15,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaMovieViewModel
+public partial class MediaMovieViewModel : ObservableObject
 {
 
 	private readonly INavigationService _navigationService;
@@ -57,7 +56,7 @@ public partial class MediaMovieViewModel
 		}
 	}
 
-	public string? MyTitleFilter => filterText;
+	public string? MyTitleFilter => FilterText;
 
 	public static ObservableCollection<Metadata>? MediaMetaData { get; } = new();
 	public ObservableCollection<Metadata>? FilteredMediaMetaData { get; } = new();
@@ -74,14 +73,14 @@ public partial class MediaMovieViewModel
 	public async Task InitializeMediaDetailDataAsync(object selectedItem)
 	{
 		var item = (Directory)selectedItem;
-		pageTitle = item.title!;
+		PageTitle = item.title!;
 		await PopulateLibraryAsync(item.key!);
 	}
 
 	public async Task InitializeMediaCollectionAsync(object selectedItem)
 	{
 		var item = (Metadata)selectedItem;
-		pageTitle = item.title!;
+		PageTitle = item.title!;
 		await PopulateCollectionAsync(item.key!);
 		var navItem = _navigationService.GetCurrentNavigationViewItem();
 		if(navItem != null)

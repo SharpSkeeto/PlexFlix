@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaShowSeasonViewModel
+public partial class MediaShowSeasonViewModel : ObservableObject
 {
 
 	private readonly INavigationService _navigationService;
@@ -53,22 +52,22 @@ public partial class MediaShowSeasonViewModel
 	public async Task GetShowSeasonDataAsync(object selectedItem)
 	{
 		var item = (Metadata)selectedItem;
-		mediaThumbNailUri = item.thumb;
-		mediaTitle = item.title;
-		mediaYear = item.year;
+		MediaThumbNailUri = item.thumb;
+		MediaTitle = item.title;
+		MediaYear = item.year;
 		if (DateOnly.TryParse(item.originallyAvailableAt!, out var originalAvail))
 		{
-			mediaReleaseDate = originalAvail.ToString("MMMM dd, yyyy");
+			MediaReleaseDate = originalAvail.ToString("MMMM dd, yyyy");
 		};
-		mediaSummary = item.summary!;
-		mediaTagline = item.tagline;
-		mediaRating = string.IsNullOrWhiteSpace(item.contentRating) ? "N/A" : item.contentRating;
+		MediaSummary = item.summary!;
+		MediaTagline = item.tagline;
+		MediaRating = string.IsNullOrWhiteSpace(item.contentRating) ? "N/A" : item.contentRating;
 		if (item.Role is not null)
-			mediaRoles = string.Join(", ", item.Role?.Select(t => t.tag)!);
+			MediaRoles = string.Join(", ", item.Role?.Select(t => t.tag)!);
 
 		if (item.Genre is not null)
-			mediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
-		mediaStudio = item.studio;
+			MediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
+		MediaStudio = item.studio;
 
 		PlexMediaLibraryItems? plexMediaLibraryItems = null;
 		MediaMetaData?.Clear();

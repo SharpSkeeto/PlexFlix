@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaMovieDetailViewModel
+public partial class MediaMovieDetailViewModel : ObservableObject
 {
 
 	protected readonly INavigationService _navigationService;
@@ -74,38 +73,38 @@ public partial class MediaMovieDetailViewModel
 	public async Task GetMediaDetailDataAsync(object selectedItem)
 	{
 		var item = (Metadata)selectedItem;
-		mediaThumbNailUri = item.thumb;
-		mediaTitle = item.title;
-		mediaYear = item.year;
+		MediaThumbNailUri = item.thumb;
+		MediaTitle = item.title;
+		MediaYear = item.year;
 		if (DateOnly.TryParse(item.originallyAvailableAt!, out var originalAvail))
 		{
-			mediaReleaseDate = originalAvail.ToString("MMMM dd, yyyy");
+			MediaReleaseDate = originalAvail.ToString("MMMM dd, yyyy");
 		};
-		mediaSummary = item.summary!;
-		mediaTagline= item.tagline;
+		MediaSummary = item.summary!;
+		MediaTagline= item.tagline;
 		var duration = TimeSpan.FromMilliseconds(item.duration);
-		mediaDuration = $"{duration.Hours} hr {duration.Minutes} min";
-		mediaRating = string.IsNullOrWhiteSpace(item.contentRating) ? "N/A" : item.contentRating;
+		MediaDuration = $"{duration.Hours} hr {duration.Minutes} min";
+		MediaRating = string.IsNullOrWhiteSpace(item.contentRating) ? "N/A" : item.contentRating;
 
 		if (item.Role is not null)
-			mediaRoles = string.Join(", ", item.Role?.Select(t => t.tag)!);
+			MediaRoles = string.Join(", ", item.Role?.Select(t => t.tag)!);
 
 		if (item.Director is not null)
-			mediaDirectors = string.Join(", ", item.Director?.Select(t => t.tag)!);
+			MediaDirectors = string.Join(", ", item.Director?.Select(t => t.tag)!);
 
 		if(item.Writer is not null)
-			mediaWriters = string.Join(", ", item.Writer?.Select(t => t.tag)!);
+			MediaWriters = string.Join(", ", item.Writer?.Select(t => t.tag)!);
 
 		if (item.Genre is not null)
-			mediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
+			MediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
 
-		mediaStudio = item.studio;
+		MediaStudio = item.studio;
 
 		if (item.Media is not null)
 		{
 			var first = item.Media?.First();
 			var firstPart = first?.Part?.FirstOrDefault();
-			mediaPath = firstPart?.key;
+			MediaPath = firstPart?.key;
 		}
 
 		var navItem = _navigationService.GetCurrentNavigationViewItem();

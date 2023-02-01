@@ -15,8 +15,7 @@ using Windows.Media.Core;
 
 namespace MyPlexManager.ViewModels;
 
-[ObservableObject]
-public partial class MediaArtistAlbumSongViewModel
+public partial class MediaArtistAlbumSongViewModel : ObservableObject
 {
 
 	private readonly INavigationService _navigationService;
@@ -52,14 +51,14 @@ public partial class MediaArtistAlbumSongViewModel
 	public async Task GetArtistAlbumSongDataAsync(object selectedItem)
 	{
 		var item = (Metadata)selectedItem;
-		mediaThumbNailUri = item.thumb;
-		mediaTitle = item.title;
-		mediaYear = item.year;
-		mediaSummary = item.summary?.Replace(System.Environment.NewLine, System.Environment.NewLine + System.Environment.NewLine)!;
-		mediaStudio = item.studio;
+		MediaThumbNailUri = item.thumb;
+		MediaTitle = item.title;
+		MediaYear = item.year;
+		MediaSummary = item.summary?.Replace(System.Environment.NewLine, System.Environment.NewLine + System.Environment.NewLine)!;
+		MediaStudio = item.studio;
 
 		if (item.Genre is not null)
-			mediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
+			MediaGenre = string.Join(", ", item.Genre?.Select(t => t.tag)!);
 
 		PlexMediaLibraryItems? plexMediaLibraryItems = null;
 		MediaMetaData?.Clear();
